@@ -1,0 +1,221 @@
+// Corne 42-key keymap
+// Layers:
+//   0 — Base        (QWERTY + home row mods)
+//   1 — Lower       (Numbers + Navigation)
+//   2 — Raise       (Symbols)
+//   3 — Adjust      (F-keys + Media)
+//   4 — System      (Bluetooth)
+//   5 — Reserved    (ZMK Studio)
+//   6 — Reserved    (ZMK Studio)
+//   7 — Reserved    (ZMK Studio)
+
+#include <behaviors.dtsi>
+#include <dt-bindings/zmk/keys.h>
+#include <dt-bindings/zmk/bt.h>
+#include <dt-bindings/zmk/outputs.h>
+
+// Key position groups for home row mod directionality
+#define KEYS_L 0 1 2 3 4 5 12 13 14 15 16 17 24 25 26 27 28 29
+#define KEYS_R 6 7 8 9 10 11 18 19 20 21 22 23 30 31 32 33 34 35
+#define KEYS_T 36 37 38 39 40 41
+
+/ {
+    // -------------------------------------------------------------------------
+    // Behaviors
+    // -------------------------------------------------------------------------
+    behaviors {
+        hml: home_row_mod_left {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            // "tap-preferred": key sends tap unless held past tapping-term while
+            // pressing an opposite-hand key. Avoids misfires during fast typing.
+            flavor = "tap-preferred";
+            // How long (ms) a key must be held before it registers as hold (modifier).
+            tapping-term-ms = <200>;
+            // If the same key is tapped again within this window, always send tap.
+            // Prevents mod activation during fast double-taps (e.g., "ff" in code).
+            quick-tap-ms = <160>;
+            // Ignore hold-tap entirely if a key was pressed less than 80ms ago.
+            // Suppresses accidental mods during fast typing rolls like "as" or "df".
+            require-prior-idle-ms = <80>;
+            // Only trigger hold when a RIGHT-hand or THUMB key is pressed.
+            hold-trigger-key-positions = <KEYS_R KEYS_T>;
+            // Evaluate hold/tap at key release rather than on a timer.
+            hold-trigger-on-release;
+            bindings = <&kp>, <&kp>;
+        };
+
+        hmr: home_row_mod_right {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            flavor = "tap-preferred";
+            tapping-term-ms = <200>;
+            quick-tap-ms = <160>;
+            require-prior-idle-ms = <80>;
+            // Only trigger hold when a LEFT-hand or THUMB key is pressed.
+            hold-trigger-key-positions = <KEYS_L KEYS_T>;
+            hold-trigger-on-release;
+            bindings = <&kp>, <&kp>;
+        };
+
+        thl: thumb_layer {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            flavor = "tap-preferred";
+            tapping-term-ms = <200>;
+            quick-tap-ms = <160>;
+            require-prior-idle-ms = <80>;
+            bindings = <&mo>, <&kp>;
+        };
+    };
+
+    // -------------------------------------------------------------------------
+    // Conditional layers (tri-layer: Lower + Raise = Adjust)
+    // -------------------------------------------------------------------------
+    conditional_layers {
+        compatible = "zmk,conditional-layers";
+
+        tri_layer {
+            if-layers = <1 2>;
+            then-layer = <3>;
+        };
+    };
+
+    // -------------------------------------------------------------------------
+    // Combos
+    // -------------------------------------------------------------------------
+    combos {
+        compatible = "zmk,combos";
+
+        combo_lpar {
+            timeout-ms = <30>;
+            require-prior-idle-ms = <80>;
+            layers = <0>;
+            key-positions = <15 16>;
+            bindings = <&kp LPAR>;
+        };
+
+        combo_rpar {
+            timeout-ms = <30>;
+            require-prior-idle-ms = <80>;
+            layers = <0>;
+            key-positions = <19 20>;
+            bindings = <&kp RPAR>;
+        };
+
+        combo_lbkt {
+            timeout-ms = <30>;
+            require-prior-idle-ms = <80>;
+            layers = <0>;
+            key-positions = <14 16>;
+            bindings = <&kp LBKT>;
+        };
+
+        combo_rbkt {
+            timeout-ms = <30>;
+            require-prior-idle-ms = <80>;
+            layers = <0>;
+            key-positions = <19 21>;
+            bindings = <&kp RBKT>;
+        };
+
+        combo_lbrc {
+            timeout-ms = <30>;
+            require-prior-idle-ms = <80>;
+            layers = <0>;
+            key-positions = <13 16>;
+            bindings = <&kp LBRC>;
+        };
+
+        combo_rbrc {
+            timeout-ms = <30>;
+            require-prior-idle-ms = <80>;
+            layers = <0>;
+            key-positions = <19 22>;
+            bindings = <&kp RBRC>;
+        };
+
+        combo_caps_word {
+            timeout-ms = <30>;
+            require-prior-idle-ms = <80>;
+            layers = <0>;
+            key-positions = <16 19>;
+            bindings = <&caps_word>;
+        };
+    };
+
+    // -------------------------------------------------------------------------
+    // Keymap
+    // -------------------------------------------------------------------------
+    keymap {
+        compatible = "zmk,keymap";
+
+        // Layer 0 — Base (QWERTY + home row mods)
+        base_layer {
+            display-name = "Base";
+            bindings = <
+                &kp TAB    &kp Q        &kp W       &kp E        &kp R         &kp T          &kp Y      &kp U         &kp I        &kp O       &kp P           &kp MINUS
+                &kp ESC    &hml LCTRL A &hml LALT S &hml LGUI D  &hml LSHFT F  &kp G          &kp H      &hmr LSHFT J  &hmr LGUI K  &hmr LALT L &hmr LCTRL SEMI &kp SQT
+                &kp GRAVE  &kp Z        &kp X       &kp C        &kp V         &kp B          &kp N      &kp M         &kp COMMA    &kp DOT     &kp FSLH        &kp BSLH
+                                         &thl 4 ESC  &kp TAB      &thl 1 SPACE                 &thl 2 RET &kp BSPC      &kp DEL
+            >;
+        };
+
+        // Layer 1 — Lower (Numbers + Navigation)
+        lower_layer {
+            display-name = "Lower";
+            bindings = <
+                &kp TAB  &kp N1    &kp N2   &kp N3   &kp N4    &kp N5       &kp N6   &kp N7    &kp N8    &kp N9    &kp N0  &trans
+                &kp ESC  &kp LCTRL &kp LALT &kp LGUI &kp LSHFT &trans       &kp LEFT &kp DOWN  &kp UP    &kp RIGHT &trans  &trans
+                &trans   &trans    &trans   &trans   &trans    &trans       &kp HOME &kp PG_DN &kp PG_UP &kp END   &trans  &trans
+                                   &trans   &trans   &trans                 &trans   &trans    &trans
+            >;
+        };
+
+        // Layer 2 — Raise (Symbols)
+        raise_layer {
+            display-name = "Raise";
+            bindings = <
+                &trans   &kp EXCL  &kp AT   &kp HASH &kp DLLR  &kp PRCNT    &kp CARET &kp AMPS &kp ASTRK &kp PLUS  &kp EQUAL &trans
+                &trans   &kp LCTRL &kp LALT &kp LGUI &kp LSHFT &trans       &trans    &trans   &trans    &trans    &trans    &trans
+                &trans   &trans    &trans   &trans   &trans    &trans       &trans    &trans   &trans    &trans    &trans    &trans
+                                   &trans   &trans   &trans                 &trans    &trans   &trans
+            >;
+        };
+
+        // Layer 3 — Adjust (F-keys + Media)
+        adjust_layer {
+            display-name = "Adjust";
+            bindings = <
+                &trans   &kp F1    &kp F2   &kp F3   &kp F4    &kp F5       &kp F6       &kp F7       &kp F8       &kp F9       &kp F10  &kp F11
+                &trans   &kp LCTRL &kp LALT &kp LGUI &kp LSHFT &trans       &kp C_PREV   &kp C_VOL_DN &kp C_VOL_UP &kp C_NEXT   &trans   &kp F12
+                &trans   &trans    &trans   &trans   &trans    &trans       &kp C_PP     &kp C_MUTE   &trans       &trans       &trans   &trans
+                                   &trans   &trans   &trans                 &trans       &trans       &trans
+            >;
+        };
+
+        // Layer 4 — System (Bluetooth)
+        system_layer {
+            display-name = "System";
+            bindings = <
+                &bt BT_CLR &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4   &trans &trans &trans &trans &sys_reset    &trans
+                &trans     &trans       &trans       &trans       &trans       &trans           &trans &trans &trans &trans &trans        &bootloader
+                &trans     &trans       &trans       &trans       &trans       &trans           &trans &trans &trans &trans &trans        &trans
+                                        &trans       &trans       &trans                        &trans &trans &trans
+            >;
+        };
+
+        // Layers 5-7 — Reserved for ZMK Studio runtime customization
+        reserved_5 {
+            status = "reserved";
+        };
+
+        reserved_6 {
+            status = "reserved";
+        };
+
+        reserved_7 {
+            status = "reserved";
+        };
+    };
+};
