@@ -1,6 +1,6 @@
 # ZMK Corne Config
 
-Typeractive Corne 42-key wireless keyboard, nice!nano v2 controllers, ZMK firmware, macOS + US International layout.
+Typeractive Corne 42-key wireless keyboard, nice!nano v2 controllers, ZMK firmware, macOS + US layout.
 
 ## Key Position Reference
 
@@ -28,14 +28,15 @@ Typeractive Corne 42-key wireless keyboard, nice!nano v2 controllers, ZMK firmwa
 ├──────┼──────┼──────┼──────┼──────┼──────┤   ├──────┼──────┼──────┼──────┼──────┼──────┤
 │  `   │  Z   │  X   │  C   │  V   │  B   │   │  N   │  M   │  ,   │  .   │  /   │  \   │
 ╰──────┴──────┴──┬───┴──┬───┴──┬───┴──────╯   ╰──────┴───┬──┴──┬───┴──┬───┴──────┴──────╯
-                  │Esc/L4│ Tab  │Spc/L1│           │Ent/L2│Bks/L3│ Del  │
+                  │Esc/L4│ Tab  │Spc/L1│           │Ent/L2│ Bksp │ Del  │
                   ╰──────┴──────┴──────╯           ╰──────┴──────┴──────╯
 ```
 
 - Home row mods: CTRL/ALT/GUI/SHIFT mirrored on ASDF and JKL;
 - All LEFT modifiers on both sides (avoids AltGr on US International)
-- Thumb hold-taps: Esc→System, Space→Lower, Enter→Raise, Bksp→Adjust
-- Tab and Del are plain taps
+- Thumb hold-taps: Esc→System, Space→Lower, Enter→Raise
+- Bksp and Del are plain keys (hold-repeatable)
+- Tri-layer: hold Space (L1) + Enter (L2) together → Adjust (L3)
 
 ### Layer 1 — Lower (Numbers + Navigation)
 
@@ -51,8 +52,6 @@ Typeractive Corne 42-key wireless keyboard, nice!nano v2 controllers, ZMK firmwa
                   ╰──────┴──────┴──────╯           ╰──────┴──────┴──────╯
 ```
 
-(████ = held key activating this layer)
-
 ### Layer 2 — Raise (Symbols)
 
 ```
@@ -67,7 +66,7 @@ Typeractive Corne 42-key wireless keyboard, nice!nano v2 controllers, ZMK firmwa
                   ╰──────┴──────┴──────╯           ╰──────┴──────┴──────╯
 ```
 
-### Layer 3 — Adjust (F-keys + Media)
+### Layer 3 — Adjust (F-keys + Media) — via tri-layer (L1 + L2)
 
 ```
 ╭──────┬──────┬──────┬──────┬──────┬──────╮   ╭──────┬──────┬──────┬──────┬──────┬──────╮
@@ -77,11 +76,11 @@ Typeractive Corne 42-key wireless keyboard, nice!nano v2 controllers, ZMK firmwa
 ├──────┼──────┼──────┼──────┼──────┼──────┤   ├──────┼──────┼──────┼──────┼──────┼──────┤
 │      │      │      │      │      │      │   │  ⏯   │ Mute │      │      │      │      │
 ╰──────┴──────┴──┬───┴──┬───┴──┬───┴──────╯   ╰──────┴───┬──┴──┬───┴──┬───┴──────┴──────╯
-                  │      │      │      │           │      │ ████ │      │
+                  │      │      │ ████ │           │ ████ │      │      │
                   ╰──────┴──────┴──────╯           ╰──────┴──────┴──────╯
 ```
 
-### Layer 4 — System (Bluetooth + ZMK Studio)
+### Layer 4 — System (Bluetooth)
 
 ```
 ╭──────┬──────┬──────┬──────┬──────┬──────╮   ╭──────┬──────┬──────┬──────┬──────┬──────╮
@@ -89,13 +88,13 @@ Typeractive Corne 42-key wireless keyboard, nice!nano v2 controllers, ZMK firmwa
 ├──────┼──────┼──────┼──────┼──────┼──────┤   ├──────┼──────┼──────┼──────┼──────┼──────┤
 │      │      │      │      │      │      │   │      │      │      │      │      │ Boot │
 ├──────┼──────┼──────┼──────┼──────┼──────┤   ├──────┼──────┼──────┼──────┼──────┼──────┤
-│      │      │      │      │      │      │   │      │      │      │      │      │StUnlk│
+│      │      │      │      │      │      │   │      │      │      │      │      │      │
 ╰──────┴──────┴──┬───┴──┬───┴──┬───┴──────╯   ╰──────┴───┬──┴──┬───┴──┬───┴──────┴──────╯
                   │ ████ │      │      │           │      │      │      │
                   ╰──────┴──────┴──────╯           ╰──────┴──────┴──────╯
 ```
 
-Layers 5–6 are reserved empty layers for ZMK Studio runtime customization.
+Layers 5–7 are reserved for ZMK Studio runtime customization.
 
 ## Combos
 
@@ -113,19 +112,7 @@ All combos are layer 0 only, 30ms timeout, 80ms prior-idle guard.
 
 ## Building
 
-### GitHub Actions
-
-- Push changes to `zmk-corne/` on main branch
-- Download `.uf2` artifacts from the Actions run
-
-### Local Docker Build
-
-```bash
-./zmk-corne/build.sh          # build firmware
-./zmk-corne/build.sh --clean  # clean cache and rebuild
-```
-
-Output: `zmk-corne/firmware/corne_left.uf2` and `zmk-corne/firmware/corne_right.uf2`
+Push to `main` — GitHub Actions builds firmware automatically. Download `.uf2` artifacts from the [Actions tab](../../actions).
 
 ## Flashing
 
