@@ -12,6 +12,6 @@ manifest:
       import: app/west.yml
     - name: nice-view-gem
       remote: llwt
-      revision: main
+      revision: v0.3-patched
   self:
     path: config
