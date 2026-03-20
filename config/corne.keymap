@@ -68,20 +68,6 @@
             bindings = <&mo>, <&kp>;
         };
 
-        // Minus key that outputs underscore when shift is active (e.g., during caps_word)
-        minus_morph: minus_underscore {
-            compatible = "zmk,behavior-mod-morph";
-            #binding-cells = <0>;
-            bindings = <&kp MINUS>, <&kp UNDER>;
-            mods = <(MOD_LSFT|MOD_RSFT)>;
-        };
-
-        // Caps word that treats minus as a continuing key (doesn't deactivate)
-        cw: caps_word_with_minus {
-            compatible = "zmk,behavior-caps-word";
-            #binding-cells = <0>;
-            continue-list = <UNDERSCORE MINUS BACKSPACE DELETE>;
-        };
     };
 
     // -------------------------------------------------------------------------
@@ -155,7 +141,7 @@
             require-prior-idle-ms = <80>;
             layers = <0>;
             key-positions = <16 19>;
-            bindings = <&cw>;
+            bindings = <&caps_word>;
         };
     };
 
@@ -169,7 +155,7 @@
         base_layer {
             display-name = "Base";
             bindings = <
-                &kp TAB    &kp Q        &kp W       &kp E        &kp R         &kp T          &kp Y      &kp U         &kp I        &kp O       &kp P           &minus_morph
+                &kp TAB    &kp Q        &kp W       &kp E        &kp R         &kp T          &kp Y      &kp U         &kp I        &kp O       &kp P           &kp MINUS
                 &kp ESC    &hml LCTRL A &hml LALT S &hml LGUI D  &hml LSHFT F  &kp G          &kp H      &hmr LSHFT J  &hmr LGUI K  &hmr LALT L &hmr LCTRL SEMI &kp SQT
                 &kp GRAVE  &kp Z        &kp X       &kp C        &kp V         &kp B          &kp N      &kp M         &kp COMMA    &kp DOT     &kp FSLH        &kp BSLH
                                          &thl 4 ESC  &kp TAB      &thl 1 SPACE                 &thl 2 RET &kp BSPC      &kp DEL
