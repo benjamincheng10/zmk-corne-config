@@ -237,6 +237,9 @@ combos:
 - p: [16, 19]
   k: '&caps_word'
   l: [Base]
+- p: [24, 4]
+  k: Gui+Sft+4
+  l: [Base]
 - p: [17, 18]
   k: '&num_word 1'
   l: [Base]
