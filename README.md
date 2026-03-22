@@ -19,6 +19,11 @@ keymap -c keymap_drawer.config.yaml draw keymap-drawer/corne.yaml > keymap-drawe
 
 The SVG is also regenerated automatically by GitHub Actions on push when keymap files change.
 
+## References
+
+- [urob/zmk-config](https://github.com/urob/zmk-config) — timeless homerow mods, Numword, combo-based symbols
+- [TimothyBesada/zmk-corne-config](https://github.com/TimothyBesada/zmk-corne-config) — colleague's Corne setup
+
 ## Building
 
 Push to `main` — GitHub Actions builds firmware automatically. Download `.uf2` artifacts from the [Actions tab](../../actions).
