@@ -172,6 +172,14 @@
             bindings = <&caps_word>;
         };
 
+        combo_screenshot {
+            timeout-ms = <40>;
+            require-prior-idle-ms = <80>;
+            layers = <0>;
+            key-positions = <24 4>; // ` + R
+            bindings = <&kp LG(LS(N4))>; // Cmd+Shift+4
+        };
+
         combo_numword {
             timeout-ms = <40>;
             require-prior-idle-ms = <80>;
