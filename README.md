@@ -2,6 +2,10 @@
 
 Typeractive Corne 42-key wireless keyboard, nice!nano v2 controllers, ZMK firmware, macOS + US layout.
 
+## Keymap
+
+![Corne keymap](keymap-drawer/corne.svg)
+
 ## Key Position Reference
 
 ```
@@ -98,7 +102,7 @@ Layers 5–7 are reserved for ZMK Studio runtime customization.
 
 ## Combos
 
-All combos are layer 0 only, 30ms timeout, 80ms prior-idle guard.
+All combos are layer 0 only, 40ms timeout, 80ms prior-idle guard.
 
 | Combo | Keys | Output | Pattern |
 |-------|------|--------|---------|
