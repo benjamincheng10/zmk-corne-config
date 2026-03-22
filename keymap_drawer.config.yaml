@@ -74,34 +74,34 @@ parse_config:
     # Adjacent combos — closest to the keys
     combo_lpar:
       align: top
-      offset: 0.1
+      offset: 0.5
     combo_rpar:
       align: top
-      offset: 0.1
+      offset: 0.5
     # Skip-one combos — a bit further out
     combo_lbkt:
       align: top
-      offset: 0.4
+      offset: 0.8
     combo_rbkt:
       align: top
-      offset: 0.4
+      offset: 0.8
     # Wide-span combos — furthest out
     combo_lbrc:
       align: top
-      offset: 0.7
+      offset: 1.1
     combo_rbrc:
       align: top
-      offset: 0.7
+      offset: 1.1
     # Cross-split combos
     combo_caps_word:
       align: top
-      offset: 0.1
+      offset: 0.5
     combo_numword:
       align: bottom
-      offset: 0.1
+      offset: 0.5
     combo_screenshot:
       align: top
-      offset: 0.1
+      offset: 0.5
 
 draw_config:
   shrink_wide_legends: 6
