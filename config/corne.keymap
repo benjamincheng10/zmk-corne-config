@@ -27,17 +27,23 @@
         hml: home_row_mod_left {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
+            // "balanced": registers hold as soon as another key is pressed AND
+            // released within tapping-term. More responsive than "tap-preferred"
+            // for cross-hand mod activation (e.g., F+I producing Shift+I, not "fi").
             // "tap-preferred": key sends tap unless held past tapping-term while
-            // pressing an opposite-hand key. Avoids misfires during fast typing.
-            flavor = "tap-preferred";
+            // pressing an opposite-hand key. Safer against false positives but
+            // requires deliberate holds for mods.
+            flavor = "balanced";
             // How long (ms) a key must be held before it registers as hold (modifier).
-            tapping-term-ms = <200>;
+            tapping-term-ms = <280>;
             // If the same key is tapped again within this window, always send tap.
             // Prevents mod activation during fast double-taps (e.g., "ff" in code).
-            quick-tap-ms = <160>;
-            // Ignore hold-tap entirely if a key was pressed less than 80ms ago.
+            quick-tap-ms = <175>;
+            // Ignore hold-tap entirely if a key was pressed less than this many ms ago.
             // Suppresses accidental mods during fast typing rolls like "as" or "df".
-            require-prior-idle-ms = <80>;
+            // Rule of thumb: set to at least 10500/WPM (e.g., 60 WPM -> 175ms).
+            // Reference: https://github.com/urob/zmk-config#timeless-homerow-mods
+            require-prior-idle-ms = <150>;
             // Only trigger hold when a RIGHT-hand or THUMB key is pressed.
             hold-trigger-key-positions = <KEYS_R KEYS_T>;
             // Evaluate hold/tap at key release rather than on a timer.
@@ -48,10 +54,10 @@
         hmr: home_row_mod_right {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
-            flavor = "tap-preferred";
-            tapping-term-ms = <200>;
-            quick-tap-ms = <160>;
-            require-prior-idle-ms = <80>;
+            flavor = "balanced";
+            tapping-term-ms = <280>;
+            quick-tap-ms = <175>;
+            require-prior-idle-ms = <150>;
             // Only trigger hold when a LEFT-hand or THUMB key is pressed.
             hold-trigger-key-positions = <KEYS_L KEYS_T>;
             hold-trigger-on-release;
@@ -61,10 +67,10 @@
         thl: thumb_layer {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
-            flavor = "tap-preferred";
-            tapping-term-ms = <200>;
-            quick-tap-ms = <160>;
-            require-prior-idle-ms = <80>;
+            flavor = "balanced";
+            tapping-term-ms = <280>;
+            quick-tap-ms = <175>;
+            require-prior-idle-ms = <150>;
             bindings = <&mo>, <&kp>;
         };
 
@@ -85,11 +91,13 @@
     // -------------------------------------------------------------------------
     // Combos
     // -------------------------------------------------------------------------
+    // Combo timeout-ms is set to 40ms while building muscle memory.
+    // Tighten to 30-35ms as accuracy improves to reduce accidental triggers.
     combos {
         compatible = "zmk,combos";
 
         combo_lpar {
-            timeout-ms = <30>;
+            timeout-ms = <40>;
             require-prior-idle-ms = <80>;
             layers = <0>;
             key-positions = <15 16>;
@@ -97,7 +105,7 @@
         };
 
         combo_rpar {
-            timeout-ms = <30>;
+            timeout-ms = <40>;
             require-prior-idle-ms = <80>;
             layers = <0>;
             key-positions = <19 20>;
@@ -105,7 +113,7 @@
         };
 
         combo_lbkt {
-            timeout-ms = <30>;
+            timeout-ms = <40>;
             require-prior-idle-ms = <80>;
             layers = <0>;
             key-positions = <14 16>;
@@ -113,7 +121,7 @@
         };
 
         combo_rbkt {
-            timeout-ms = <30>;
+            timeout-ms = <40>;
             require-prior-idle-ms = <80>;
             layers = <0>;
             key-positions = <19 21>;
@@ -121,7 +129,7 @@
         };
 
         combo_lbrc {
-            timeout-ms = <30>;
+            timeout-ms = <40>;
             require-prior-idle-ms = <80>;
             layers = <0>;
             key-positions = <13 16>;
@@ -129,7 +137,7 @@
         };
 
         combo_rbrc {
-            timeout-ms = <30>;
+            timeout-ms = <40>;
             require-prior-idle-ms = <80>;
             layers = <0>;
             key-positions = <19 22>;
@@ -137,7 +145,7 @@
         };
 
         combo_caps_word {
-            timeout-ms = <30>;
+            timeout-ms = <40>;
             require-prior-idle-ms = <80>;
             layers = <0>;
             key-positions = <16 19>;
