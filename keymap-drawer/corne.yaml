@@ -63,9 +63,9 @@ layers:
   - '6'
   - {t: ▽, type: trans}
   - ←
-  - ↓
-  - ↑
-  - →
+  - {t: ↓, h: Shift}
+  - {t: ↑, h: Cmd}
+  - {t: →, h: Alt}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
