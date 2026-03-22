@@ -1,0 +1,76 @@
+parse_config:
+  raw_binding_map:
+    "&bootloader": Boot
+    "&sys_reset": Reset
+    "&caps_word": Caps Word
+    "&num_word 1": Num Word
+    "&kp LG(LS(N4))": Screenshot
+  modifier_fn_map:
+    left_ctrl: Ctrl
+    right_ctrl: Ctrl
+    left_shift: Shift
+    right_shift: Shift
+    left_alt: Alt
+    right_alt: Alt
+    left_gui: Cmd
+    right_gui: Cmd
+    keycode_combiner: "{mods}+{key}"
+    mod_combiner: "{mod_1}+{mod_2}"
+  zmk_keycode_map:
+    LCTRL: Ctrl
+    RCTRL: Ctrl
+    LSHFT: Shift
+    RSHFT: Shift
+    LGUI: Cmd
+    RGUI: Cmd
+    LALT: Alt
+    RALT: Alt
+    SQT: "'"
+    SEMI: ;
+    FSLH: /
+    BSLH: \
+    GRAVE: "`"
+    MINUS: "-"
+    COMMA: ","
+    DOT: .
+    EXCL: "!"
+    AT: "@"
+    HASH: "#"
+    DLLR: $
+    PRCNT: "%"
+    CARET: ^
+    AMPS: "&"
+    ASTRK: "*"
+    PLUS: +
+    EQUAL: "="
+    LPAR: (
+    RPAR: )
+    LBKT: "["
+    RBKT: "]"
+    LBRC: "{"
+    RBRC: "}"
+    BSPC: Bksp
+    DEL: Del
+    RET: Enter
+    ESC: Esc
+    TAB: Tab
+    SPACE: Space
+    LEFT: "\u2190"
+    DOWN: "\u2193"
+    UP: "\u2191"
+    RIGHT: "\u2192"
+    HOME: Home
+    END: End
+    PG_UP: PgUp
+    PG_DN: PgDn
+    C_VOL_UP: Vol+
+    C_VOL_DN: Vol-
+    C_MUTE: Mute
+    C_PP: "\u23EF"
+    C_PREV: "\u23EE"
+    C_NEXT: "\u23ED"
+
+draw_config:
+  separate_combo_diagrams: true
+  combo_diagrams_scale: 2
+  shrink_wide_legends: 6
