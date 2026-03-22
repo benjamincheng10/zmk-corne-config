@@ -70,7 +70,38 @@ parse_config:
     C_PREV: "\u23EE"
     C_NEXT: "\u23ED"
 
+  zmk_combos:
+    # Adjacent combos
+    combo_lpar:
+      align: top
+      offset: 1.0
+    combo_rpar:
+      align: top
+      offset: 1.0
+    # Skip-one combos — further out
+    combo_lbkt:
+      align: top
+      offset: 1.5
+    combo_rbkt:
+      align: top
+      offset: 1.5
+    # Wide-span combos — furthest out
+    combo_lbrc:
+      align: top
+      offset: 2.0
+    combo_rbrc:
+      align: top
+      offset: 2.0
+    # Cross-split combos
+    combo_caps_word:
+      align: top
+      offset: 1.0
+    combo_numword:
+      align: bottom
+      offset: 0.5
+    combo_screenshot:
+      align: top
+      offset: 2.5
+
 draw_config:
-  separate_combo_diagrams: true
-  combo_diagrams_scale: 2
   shrink_wide_legends: 6
