@@ -6,6 +6,8 @@ manifest:
       url-base: https://github.com/zmkfirmware
     - name: llwt
       url-base: https://github.com/llwt
+    - name: urob
+      url-base: https://github.com/urob
   projects:
     - name: zmk
       remote: zmkfirmware
@@ -13,5 +15,8 @@ manifest:
     - name: nice-view-gem
       remote: llwt
       revision: eff604b85b36a951fa6efef442486d21f8980522 # v0.3-patched
+    - name: zmk-auto-layer
+      remote: urob
+      revision: v0.3.0
   self:
     path: config

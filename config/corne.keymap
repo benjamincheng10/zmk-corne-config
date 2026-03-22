@@ -10,6 +10,7 @@
 //   7 — Reserved    (ZMK Studio)
 
 #include <behaviors.dtsi>
+#include <behaviors/num_word.dtsi>
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/outputs.h>
@@ -75,6 +76,25 @@
         };
 
     };
+
+    // -------------------------------------------------------------------------
+    // Numword (auto-layer: stays active while typing numbers/operators,
+    // deactivates on any other key — e.g., Esc or letters)
+    // -------------------------------------------------------------------------
+};
+
+&num_word {
+    continue-list = <
+        BACKSPACE DELETE
+        DOT COMMA
+        PLUS MINUS STAR FSLH EQUAL
+        LEFT DOWN UP RIGHT HOME END PG_DN PG_UP
+    >;
+    ignore-numbers;
+    ignore-modifiers;
+};
+
+/ {
 
     // -------------------------------------------------------------------------
     // Conditional layers (tri-layer: Lower + Raise = Adjust)
@@ -151,6 +171,14 @@
             key-positions = <16 19>;
             bindings = <&caps_word>;
         };
+
+        combo_numword {
+            timeout-ms = <40>;
+            require-prior-idle-ms = <80>;
+            layers = <0>;
+            key-positions = <17 18>; // G + H
+            bindings = <&num_word 1>; // activate Layer 1 (Lower)
+        };
     };
 
     // -------------------------------------------------------------------------
@@ -175,7 +203,7 @@
             display-name = "Lower";
             bindings = <
                 &kp TAB  &kp N1    &kp N2   &kp N3   &kp N4    &kp N5       &kp N6   &kp N7    &kp N8    &kp N9    &kp N0  &trans
-                &kp ESC  &kp LCTRL &kp LALT &kp LGUI &kp LSHFT &trans       &kp LEFT &kp DOWN  &kp UP    &kp RIGHT &trans  &trans
+                &none    &kp LCTRL &kp LALT &kp LGUI &kp LSHFT &trans       &kp LEFT &kp DOWN  &kp UP    &kp RIGHT &trans  &trans
                 &trans   &trans    &trans   &trans   &trans    &trans       &kp HOME &kp PG_DN &kp PG_UP &kp END   &trans  &trans
                                    &trans   &trans   &trans                 &trans   &trans    &trans
             >;
