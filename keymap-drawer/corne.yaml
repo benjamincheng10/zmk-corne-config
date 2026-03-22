@@ -219,27 +219,45 @@ combos:
 - p: [15, 16]
   k: (
   l: [Base]
+  a: top
+  o: 0.1
 - p: [19, 20]
   k: )
   l: [Base]
+  a: top
+  o: 0.1
 - p: [14, 16]
   k: '['
   l: [Base]
+  a: top
+  o: 0.4
 - p: [19, 21]
   k: ']'
   l: [Base]
+  a: top
+  o: 0.4
 - p: [13, 16]
   k: '{'
   l: [Base]
+  a: top
+  o: 0.7
 - p: [19, 22]
   k: '}'
   l: [Base]
+  a: top
+  o: 0.7
 - p: [16, 19]
   k: Caps Word
   l: [Base]
+  a: top
+  o: 0.1
 - p: [24, 4]
   k: Screenshot
   l: [Base]
+  a: top
+  o: 0.1
 - p: [17, 18]
   k: Num Word
   l: [Base]
+  a: bottom
+  o: 0.1
