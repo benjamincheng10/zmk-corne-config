@@ -1,7 +1,7 @@
 layout: {zmk_keyboard: corne}
 layers:
   Base:
-  - TAB
+  - Tab
   - Q
   - W
   - E
@@ -13,17 +13,17 @@ layers:
   - O
   - P
   - '-'
-  - ESC
-  - {t: A, h: LCTRL}
-  - {t: S, h: LALT}
-  - {t: D, h: LGUI}
-  - {t: F, h: LSHFT}
+  - Esc
+  - {t: A, h: Ctrl}
+  - {t: S, h: Alt}
+  - {t: D, h: Cmd}
+  - {t: F, h: Shift}
   - G
   - H
-  - {t: J, h: LSHFT}
-  - {t: K, h: LGUI}
-  - {t: L, h: LALT}
-  - {t: ;, h: LCTRL}
+  - {t: J, h: Shift}
+  - {t: K, h: Cmd}
+  - {t: L, h: Alt}
+  - {t: ;, h: Ctrl}
   - ''''
   - '`'
   - Z
@@ -37,14 +37,14 @@ layers:
   - .
   - /
   - \
-  - {t: ESC, h: System}
-  - TAB
-  - {t: SPACE, h: Lower}
-  - {t: RET, h: Raise}
-  - BSPC
-  - DEL
+  - {t: Esc, h: System}
+  - Tab
+  - {t: Space, h: Lower}
+  - {t: Enter, h: Raise}
+  - Bksp
+  - Del
   Lower:
-  - TAB
+  - Tab
   - '1'
   - '2'
   - '3'
@@ -57,27 +57,27 @@ layers:
   - '0'
   - {t: ▽, type: trans}
   - ''
-  - LCTRL
-  - LALT
-  - LGUI
-  - LSHFT
+  - Ctrl
+  - Alt
+  - Cmd
+  - Shift
   - {t: ▽, type: trans}
-  - LEFT
-  - DOWN
-  - UP
-  - RIGHT
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
+  - ←
+  - ↓
+  - ↑
+  - →
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
-  - HOME
-  - PG DN
-  - PG UP
-  - END
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - Home
+  - PgDn
+  - PgUp
+  - End
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
@@ -100,10 +100,10 @@ layers:
   - '='
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
-  - LCTRL
-  - LALT
-  - LGUI
-  - LSHFT
+  - Ctrl
+  - Alt
+  - Cmd
+  - Shift
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
@@ -143,15 +143,15 @@ layers:
   - F10
   - F11
   - {t: ▽, type: trans}
-  - LCTRL
-  - LALT
-  - LGUI
-  - LSHFT
+  - Ctrl
+  - Alt
+  - Cmd
+  - Shift
   - {t: ▽, type: trans}
-  - PREV
-  - VOL DN
-  - VOL UP
-  - NEXT
+  - ⏮
+  - Vol-
+  - Vol+
+  - ⏭
   - {t: ▽, type: trans}
   - F12
   - {t: ▽, type: trans}
@@ -160,8 +160,8 @@ layers:
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
-  - PP
-  - MUTE
+  - ⏯
+  - Mute
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
@@ -183,7 +183,7 @@ layers:
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
-  - '&sys_reset'
+  - Reset
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
@@ -196,7 +196,7 @@ layers:
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
-  - '&bootloader'
+  - Boot
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
@@ -235,11 +235,11 @@ combos:
   k: '}'
   l: [Base]
 - p: [16, 19]
-  k: '&caps_word'
+  k: Caps Word
   l: [Base]
 - p: [24, 4]
-  k: Gui+Sft+4
+  k: Screenshot
   l: [Base]
 - p: [17, 18]
-  k: '&num_word 1'
+  k: Num Word
   l: [Base]
