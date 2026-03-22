@@ -56,7 +56,7 @@ layers:
   - '9'
   - '0'
   - {t: ▽, type: trans}
-  - ESC
+  - ''
   - LCTRL
   - LALT
   - LGUI
@@ -236,4 +236,7 @@ combos:
   l: [Base]
 - p: [16, 19]
   k: '&caps_word'
+  l: [Base]
+- p: [17, 18]
+  k: '&num_word 1'
   l: [Base]
