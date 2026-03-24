@@ -217,7 +217,7 @@ layers:
   - {t: ▽, type: trans}
 combos:
 - p: [15, 16]
-  k: Lower
+  k: LEFT PARENTHESIS
   l: [Base]
   a: top
   o: 1.2
@@ -259,3 +259,5 @@ combos:
 - p: [17, 18]
   k: Num Word
   l: [Base]
+- p: [4, 3]
+  k: A
