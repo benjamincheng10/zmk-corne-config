@@ -217,7 +217,7 @@ layers:
   - {t: ▽, type: trans}
 combos:
 - p: [15, 16]
-  k: (
+  k: Lower
   l: [Base]
   a: top
   o: 1.2

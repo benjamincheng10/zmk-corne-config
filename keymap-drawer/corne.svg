@@ -313,8 +313,9 @@ path.combo {
 <path d="M224,-12 h-22 a6.0,6.0 0 0 0 -6.0,6.0 v72" class="combo"/>
 <path d="M224,-12 h22 a6.0,6.0 0 0 1 6.0,6.0 v79" class="combo"/>
 <rect rx="6" ry="6" x="210" y="-25" width="28" height="26" class="combo"/>
-<text x="224" y="-12" class="combo tap">(</text>
-</g>
+<a href="#Lower">
+<text x="224" y="-12" class="combo tap layer-activator">Lower</text>
+</a></g>
 <g class="combo combopos-1">
 <path d="M616,-12 h-22 a6.0,6.0 0 0 0 -6.0,6.0 v79" class="combo"/>
 <path d="M616,-12 h22 a6.0,6.0 0 0 1 6.0,6.0 v72" class="combo"/>
